@@ -5,13 +5,7 @@ function pluralize(count, word) {
   return count === 1 ? word : word + 's';
 }
 
-export default function TodoFooter({
-  activeCount,
-  completedCount,
-  showTodos,
-  onClearCompleted,
-  onShowTodos
-}) {
+export default function TodoFooter({ activeCount, completedCount, showTodos, onClearCompleted, onShowTodos }) {
   return (
     <footer className="footer">
       <span className="todo-count">
@@ -20,22 +14,22 @@ export default function TodoFooter({
       </span>
 
       <ul className="filters">
-        {['all', 'active', 'completed'].map(filter => (
+        {['all', 'active', 'completed'].map((filter) => (
           <li key={filter}>
             <a
               style={{ cursor: 'pointer' }}
               onClick={() => (onShowTodos(filter), false)}
-              className={classNames({ selected: showTodos === filter })}>
-              {filter[0].toUpperCase()}{filter.substring(1)}
+              className={classNames({ selected: showTodos === filter })}
+            >
+              {filter[0].toUpperCase()}
+              {filter.substring(1)}
             </a>
           </li>
         ))}
       </ul>
 
       {completedCount > 0 ? (
-        <button
-          className="clear-completed"
-          onClick={onClearCompleted}>
+        <button style="background-color: red" className="clear-completed" onClick={onClearCompleted}>
           Clear completed
         </button>
       ) : null}
