@@ -29,7 +29,7 @@ export default function TodoFooter({ activeCount, completedCount, showTodos, onC
       </ul>
 
       {completedCount > 0 ? (
-        <button style="background-color: red" className="clear-completed" onClick={onClearCompleted}>
+        <button style={{ backgroundColor: red }} className="clear-completed" onClick={onClearCompleted}>
           Clear completed
         </button>
       ) : null}
