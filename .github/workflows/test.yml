@@ -1,5 +1,10 @@
 name: Tests
-on: push
+on:
+  push:
+    tags:
+      - v0.*
+      - v1.*
+      - v2.*
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,6 +20,9 @@ jobs:
           restore-keys: v1/${{ runner.os }}/node-14/
       - name: Install dependencies
         run: npm install
+      - name: Percy Variables
+        run: |
+          export PERCY_TOKEN=${{ secrets.PERCY_TOKEN }}
       - name: Run tests
         run: npm test
         env:
